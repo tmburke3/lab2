@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 2</title>
+
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+           crossorigin=""/>
+
+         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+           integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+           crossorigin=""></script>
+
+    </head>
+
+    <body>
+        <div id="map" style="height: 500px"></div>
+
+        <script type="text/javascript">
+
+          var map = L.map('map', {
+              center: [38.16, -96.96],
+              zoom: 4
+          });
+
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+               attribution: '@ <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+               maxZoom: 4,
+               minZoom: 4
+            }).addTo(map);
+
+var pinIcon = L.icon({
+    iconUrl: 'pin.png', // url that links to the icon image file
+    iconSize:     [38, 38], // size of the icon image in pixels
+    iconAnchor:   [19, 19], // the top left corner of the icon will be aligned so that this point is at the marker's geographical location
+    popupAnchor:  [0, -10] // point from which the popup should open, relative to the iconAnchor
+});
+var marker1 = L.marker([45.6366,-89.4121], {icon: pinIcon}).addTo(map);
+var marker2 = L.marker([29.035664,-81.301505], {icon: pinIcon}).addTo(map);
+var marker3 = L.marker([40.790885,-73.9747115], {icon: pinIcon}).addTo(map);
+
+var pic1 = '<img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Rhinelander_Wisconsin_Downtown_Looking_East.jpg" alt="Rhinelander" width="250">';
+var pic2 = '<img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Stetson_Univ_-_Sampson_Hall1.jpg" alt="Stetson University" width="250">';
+var pic3 = '<img src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Winter_Garden_-_Beetlejuice_the_Musical_%2848193414951%29.jpg" alt="Beetlejuice on Broadway" width="250">';
+
+marker1.bindPopup('<p style="color:LightSalmon; font-weight:bold"> Rhinelander, WI: came here for family vacations as a child</p>' + pic1);
+marker2.bindPopup('<p style="color:forestgreen; font-weight:bold"> Stetson University: my undergraduate alma mater</p>' + pic2);
+marker3.bindPopup('<p style="color:turquoise; font-weight:bold"> Broadway, NY: I saw the Beetlejuice musical here!</p>' + pic3);
+        </script>
+   </body>
+</html>
